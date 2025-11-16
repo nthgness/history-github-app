@@ -13,10 +13,11 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-lg transition-colors shadow-sm hover:shadow-md disabled:cursor-not-allowed"
+      className="p-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white transition-colors shadow-sm hover:shadow-md disabled:cursor-not-allowed"
+      aria-label={pending ? 'Refreshing commits...' : 'Refresh commits'}
+      title={pending ? 'Refreshing...' : 'Refresh'}
     >
       <RefreshIcon className={`w-5 h-5 ${pending ? 'animate-spin' : ''}`} />
-      {pending ? 'Refreshing...' : 'Refresh'}
     </button>
   )
 }
