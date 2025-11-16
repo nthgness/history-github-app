@@ -1,13 +1,28 @@
 'use client'
 
 import { useCommitsQuery } from '@/lib/hooks/useCommitsQuery'
+import { useCommitFilters } from '@/lib/hooks/useCommitFilters'
 import CommitList from './CommitList'
+import CommitFilters from './CommitFilters'
 import LoadingSkeleton from '@/components/states/LoadingSkeleton'
 import { ErrorMessage } from '@/components/states/ErrorMessage'
 import { ClipboardIcon } from '@/components/icons/ClipboardIcon'
 
 const CommitsContainer = () => {
   const { commits, isLoading, isError, error } = useCommitsQuery()
+  
+  const {
+    search,
+    selectedAuthor,
+    authors,
+    filteredCommits,
+    totalCount,
+    filteredCount,
+    hasFilters,
+    handleSearchChange,
+    handleAuthorChange,
+    handleClear,
+  } = useCommitFilters(commits)
 
   if (isLoading) {
     return <LoadingSkeleton />
@@ -58,7 +73,19 @@ const CommitsContainer = () => {
           Recent Commits
         </h2>
 
-        <CommitList commits={commits} />
+        <CommitFilters
+          search={search}
+          selectedAuthor={selectedAuthor}
+          authors={authors}
+          totalCount={totalCount}
+          filteredCount={filteredCount}
+          hasFilters={hasFilters}
+          onSearchChange={handleSearchChange}
+          onAuthorChange={handleAuthorChange}
+          onClear={handleClear}
+        />
+
+        <CommitList commits={filteredCommits} />
       </main>
     </>
   )
