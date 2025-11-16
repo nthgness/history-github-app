@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { formatTimeAgo, formatSha } from "@/lib/utils/formatters";
+import { formatSha } from "@/lib/utils/formatters";
+import { useTimeAgo } from "@/lib/hooks/useTimeAgo";
 import type { CommitDisplayData } from "@/types";
 
 interface CommitItemProps {
@@ -9,18 +9,7 @@ interface CommitItemProps {
 }
 
 const CommitItem = ({ commit }: CommitItemProps) => {
-  const [timeAgo, setTimeAgo] = useState("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      setTimeAgo(formatTimeAgo(commit.date));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-
-    return () => clearInterval(interval);
-  }, [commit.date]);
+  const timeAgo = useTimeAgo(commit.date);
 
   return (
     <div className="group relative border-l-2 border-gray-200 dark:border-gray-700 pl-6 pb-8 last:pb-0">

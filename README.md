@@ -109,7 +109,8 @@ components/
 lib/
 ├── constants.ts        # App constants
 ├── hooks/              # Custom React hooks
-│   └── useCommitsQuery.ts
+│   ├── useCommitsQuery.ts
+│   └── useTimeAgo.ts
 └── utils/              # Utility functions
     └── formatters.ts
 
