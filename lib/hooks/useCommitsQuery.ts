@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCommits } from "@/app/actions";
 import { QUERY_KEYS, API_CONFIG } from "@/lib/constants";
 
-export function useCommitsQuery() {
+export const useCommitsQuery = () => {
   const query = useQuery({
     queryKey: QUERY_KEYS.commits,
     staleTime: API_CONFIG.staleTime,
@@ -24,4 +24,4 @@ export function useCommitsQuery() {
     error: query.error,
     refetch: query.refetch,
   };
-}
+};

@@ -7,10 +7,10 @@ import { formatTimeAgo } from "@/lib/utils/formatters";
  * @param updateInterval - Update interval in milliseconds (default: 60000 = 1 minute)
  * @returns Formatted time ago string (e.g., "2 minutes ago")
  */
-export function useTimeAgo(
+export const useTimeAgo = (
   date: string | Date,
   updateInterval: number = 60000
-): string {
+): string => {
   const [timeAgo, setTimeAgo] = useState("");
 
   useEffect(() => {
@@ -29,4 +29,4 @@ export function useTimeAgo(
   }, [date, updateInterval]);
 
   return timeAgo;
-}
+};
