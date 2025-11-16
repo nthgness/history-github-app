@@ -54,7 +54,8 @@ pnpm dev
 
 - ✅ Display list of commits from main/master branch
 - ✅ Auto-updating timestamps without page reload
-- ✅ Refresh button with Server Actions
+- ✅ Refresh button with Server Actions and useFormStatus
+- ✅ Search and filter commits by message, author
 - ✅ Loading states without flickering
 - ✅ Responsive design
 - ✅ Dark mode support
@@ -92,6 +93,7 @@ components/
 │   ├── CommitItem.tsx
 │   ├── CommitList.tsx
 │   ├── CommitsContainer.tsx
+│   ├── CommitFilters.tsx
 │   └── RefreshButton.tsx
 ├── states/             # UI state components
 │   ├── EmptyState.tsx
@@ -101,7 +103,8 @@ components/
 │   ├── AlertIcon.tsx
 │   ├── ClipboardIcon.tsx
 │   ├── DocumentIcon.tsx
-│   └── RefreshIcon.tsx
+│   ├── RefreshIcon.tsx
+│   └── SearchIcon.tsx
 └── layout/             # Layout components
     ├── Header.tsx
     └── Footer.tsx
@@ -110,6 +113,7 @@ lib/
 ├── constants.ts        # App constants
 ├── hooks/              # Custom React hooks
 │   ├── useCommitsQuery.ts
+│   ├── useCommitFilters.ts
 │   └── useTimeAgo.ts
 └── utils/              # Utility functions
     └── formatters.ts
